@@ -19,7 +19,6 @@
 <string name="ThemeSet" value="es-theme-nes-box" />
 <string name="TransitionStyle" value="instant" />
 <string name="amiga.emulator" value="retroarch" />
-<string name="ppsspp.emulator" value="standalone" />
 <string name="subset.Color" value="blue" />
 <string name="subset.Emulationstation Screen" value="ES Fullscreen" />
 <string name="GameLoadingIMode" value="pic" />
