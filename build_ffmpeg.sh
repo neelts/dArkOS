@@ -4,6 +4,7 @@
 if [ -f "Arkbuild_package_cache/${CHIPSET}/ffmpeg.tar.gz" ]; then
     sudo tar -xvzpf Arkbuild_package_cache/${CHIPSET}/ffmpeg.tar.gz
 else
+	sudo cp ffmpeg/patches
 	call_chroot "cd /home/ark &&
 	  cd ${CHIPSET}_core_builds &&
 	  git clone -b jellyfin-mpp --depth=1 https://github.com/nyanmisaka/mpp.git rkmpp &&
@@ -30,11 +31,11 @@ else
       -Dlibrga_demo=false &&
 	  ninja -C rkrga_build install &&
 	  cp -av rkrga_build/librga.so* /usr/lib/aarch64-linux-gnu/ &&
-	  git clone --depth=1 https://github.com/nyanmisaka/ffmpeg-rockchip.git -b 7.1 ffmpeg &&
+	  git clone --depth=1 https://github.com/christianhaitian/ffmpeg-rockchip.git -b 7.1 ffmpeg &&
 	  cd ffmpeg &&
 	  rm /usr/lib/aarch64-linux-gnu/librga.so.2.0.0 /usr/lib/aarch64-linux-gnu/librga.so.2 /usr/lib/aarch64-linux-gnu/librga.so &&
 	  rm -rf /usr/local/include/rga &&
-	  ./configure --prefix=/usr --libdir=/usr/lib/aarch64-linux-gnu --shlibdir=/usr/lib/aarch64-linux-gnu --enable-gpl --enable-version3 --enable-libdrm --enable-rkmpp --enable-rkrga --disable-vulkan --disable-autodetect --enable-shared --disable-static &&
+	  ./configure --prefix=/usr --libdir=/usr/lib/aarch64-linux-gnu --shlibdir=/usr/lib/aarch64-linux-gnu --enable-gpl --enable-version3 --enable-libdrm --enable-rkmpp --enable-rkrga --disable-vulkan --disable-autodetect --enable-shared --disable-static --enable-sdl &&
 	  make -j $(nproc) &&
 	  make install
 	  "

@@ -103,7 +103,7 @@ sudo cp kodi/scripts/Kodi.sh ${KODI_DEVENV}/usr/local/bin/
 sudo chmod 777 ${KODI_DEVENV}/usr/local/bin/Kodi.sh
 
 # Create the compressed tar of the setup
-sudo chroot ${KODI_DEVENV} bash -c "tar -cJvf Kodi-${KODI_VERSION_TAG}.tar.xz /opt/kodi/* /usr/local/bin/Kodi.sh /usr/lib/aarch64-linux-gnu/{libavcodec.so*,libavdevice.so*,libavfilter.so*,libpostproc.so*,libavutil.so*,libswresample.so*,libavformat.so*,libswscale.so*,librockchip_*}"
+sudo chroot ${KODI_DEVENV} bash -c "tar -cJvf Kodi-${KODI_VERSION_TAG}.tar.xz /opt/kodi/* /usr/bin/ff* /usr/local/bin/Kodi.sh /usr/lib/aarch64-linux-gnu/{libavcodec.so*,libavdevice.so*,libavfilter.so*,libpostproc.so*,libavutil.so*,libswresample.so*,libavformat.so*,libswscale.so*,librockchip_*}"
 
 cat <<EOF | tee Kodi-${KODI_VERSION_TAG}-install.sh
 #!/bin/bash
