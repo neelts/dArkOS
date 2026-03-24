@@ -39,7 +39,6 @@ else
 	  make -j $(nproc) &&
 	  make install
 	  "
-	sudo cp -a Arkbuild/home/ark/${CHIPSET}_core_builds/ffmpeg64/ffmpeg Arkbuild/opt/ffmpeg/
 	if [ -f "Arkbuild_package_cache/${CHIPSET}/ffmpeg.tar.gz" ]; then
 	  sudo rm -f Arkbuild_package_cache/${CHIPSET}/ffmpeg.tar.gz
 	fi

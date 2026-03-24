@@ -83,7 +83,7 @@ cd initrd
 zstd -d -c initrd.img | cpio -idmv
 rm -f initrd.img
 sed -i '/local dev_id\=/c\\tlocal dev_id\=\"/dev/mmcblk1p4\"' scripts/local
-#Add regulatory.db and regualtory.db.p7s
+#Add regulatory.db and regulatory.db.p7s
 mkdir -p usr/lib/firmware
 wget https://github.com/CaffeeLake/wireless-regdb/raw/refs/heads/master/regulatory.db -O lib/firmware/regulatory.db -O lib/firmware/regulatory.db
 #wget -t 5 -T 60 https://git.kernel.org/pub/scm/linux/kernel/git/wens/wireless-regdb.git/plain/regulatory.db.p7s -O lib/firmware/regulatory.db.p7s

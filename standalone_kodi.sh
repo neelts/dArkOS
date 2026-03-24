@@ -159,6 +159,9 @@ then
   then
     echo "deb http://deb.debian.org/debian ${DEBIAN_CODE_NAME}-backports main" | sudo tee -a /etc/apt/sources.list
   fi
+  PAYLOAD_LINE=\$(awk '/^__PAYLOAD_BEGINS__/ { print NR + 1; exit 0; }' \$0)
+  WORK_DIR=/
+  process_tar
   sudo apt -y update
   while read KODI_NEEDED_PACKAGE; do
     if [[ ! "\$KODI_NEEDED_PACKAGE" =~ ^# ]] && [[ ! "\$KODI_NEEDED_PACKAGE" == *"-dev"* ]]; then
@@ -167,9 +170,7 @@ then
   done </opt/kodi/kodi_needed_packages.txt
 
   sudo rm /opt/kodi/kodi_needed_packages.txt
-  PAYLOAD_LINE=\$(awk '/^__PAYLOAD_BEGINS__/ { print NR + 1; exit 0; }' \$0)
-  WORK_DIR=/
-  process_tar
+
   printf "\nThis process has completed.  Kodi ${KODI_VERSION_TAG} should now been installed." >> /dev/tty1
   sleep 5
   clear
