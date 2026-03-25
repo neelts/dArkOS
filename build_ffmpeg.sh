@@ -46,7 +46,7 @@ else
 fi
 
 # Add permission to use hardware decoders
-cat <<EOF | sudo tee -a Arkbuild/etc/polkit-1/rules.d/50-mpp-permission.rules
+cat <<EOF | sudo tee -a Arkbuild/etc/udev/rules.d/50-mpp-permission.rules
 KERNEL=="mpp_service", MODE="0660", GROUP="video"
 KERNEL=="rga", MODE="0660", GROUP="video"
 KERNEL=="system-dma32", MODE="0666", GROUP="video"
