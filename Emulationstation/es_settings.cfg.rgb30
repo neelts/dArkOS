@@ -16,6 +16,8 @@
 <string name="ScreenSaverGameInfo" value="always" />
 <string name="Sega Saturn.emulator" value="standalone-nobios" />
 <string name="SlideshowScreenSaverBackgroundAudioFile" value="/home/ark/.emulationstation/slideshow/audio/slideshow_bg.wav" />
+<string name="StartupOnRom" value="splore" />
+<string name="StartupSystem" value="pico-8" />
 <string name="ThemeRegionName" value="" />
 <string name="ThemeSet" value="es-theme-sagabox" />
 <string name="TransitionStyle" value="instant" />

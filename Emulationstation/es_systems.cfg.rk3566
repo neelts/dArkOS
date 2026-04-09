@@ -2270,8 +2270,8 @@
 		<name>pico-8</name>
 		<fullname>PICO-8</fullname>
 		<path>/roms/pico-8/carts/</path>
-		<extension>.png .PNG .p8 .P8</extension>
-		<command>sudo perfmax %GOVERNOR% %ROM%; sudo systemctl start pico8hotkey; nice -n -19 /usr/local/bin/pico8.sh %EMULATOR% %ROM%; sudo systemctl stop pico8hotkey; sudo perfnorm</command>
+		<extension>.png .PNG .p8 .P8 .sh .SH</extension>
+		<command>sudo perfmax %GOVERNOR% %ROM%; nice -n -19 /usr/local/bin/pico8launch.sh %EMULATOR% %ROM%; sudo perfnorm</command>
 		<emulators>
 			<emulator name="float-scaled">
 		      </emulator>

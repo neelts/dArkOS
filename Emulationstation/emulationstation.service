@@ -6,7 +6,7 @@ After=firstboot.service
 Type=simple
 User=ark
 WorkingDirectory=/home/ark
-ExecStart=/usr/bin/emulationstation/emulationstation.sh
+ExecStart=/usr/local/bin/pico8-autoboot.sh
 Environment="SDL_VIDEO_EGL_DRIVER=libEGL.so"
 Restart=on-failure
 

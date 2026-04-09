@@ -1,0 +1,28 @@
+--- a/es-core/src/Settings.cpp
++++ b/es-core/src/Settings.cpp
+@@ -1 +1 @@
+-	mStringMap["StartupSystem"] = "";
++	mStringMap["StartupSystem"] = "";
++	mStringMap["StartupOnRom"] = "";
+--- a/es-app/src/guis/GuiMenu.cpp
++++ b/es-app/src/guis/GuiMenu.cpp
+@@ -1 +1 @@
+-	s->addSaveFunc([systemfocus_list] {
+-		Settings::getInstance()->setString("StartupSystem", systemfocus_list->getSelected());
+-	});
++	s->addSaveFunc([systemfocus_list] {
++		Settings::getInstance()->setString("StartupSystem", systemfocus_list->getSelected());
++	});
++
++	if (Settings::getInstance()->getString("StartupSystem") == "pico-8") {
++		auto startOnRom = std::make_shared<OptionListComponent<std::string>>(mWindow, _("START ON ROM"), false);
++		startOnRom->add(_("NONE"),   "",       Settings::getInstance()->getString("StartupOnRom") == "");
++		startOnRom->add(_("SPLORE"), "splore", Settings::getInstance()->getString("StartupOnRom") == "splore");
++		startOnRom->add(_("RECENT"), "recent", Settings::getInstance()->getString("StartupOnRom") == "recent");
++		if (!startOnRom->hasSelection())
++			startOnRom->selectFirstItem();
++		s->addWithLabel(_("START ON ROM"), startOnRom);
++		s->addSaveFunc([startOnRom] {
++			Settings::getInstance()->setString("StartupOnRom", startOnRom->getSelected());
++		});
++	}

@@ -1,0 +1,2 @@
+- Remove the rest of the dependencies
+- Hack in seeting changes via special settings rom for Pico-8

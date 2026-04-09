@@ -24,5 +24,9 @@ fi
 call_chroot "chown -R ark:ark /opt/"
 sudo chmod 777 Arkbuild/opt/fake08/fake08
 sudo cp pico8/pico8.sh Arkbuild/usr/local/bin/pico8.sh
+sudo cp pico8/pico8-autoboot.sh Arkbuild/usr/local/bin/pico8-autoboot.sh
+sudo cp pico8/pico8launch.sh Arkbuild/usr/local/bin/pico8launch.sh
 sudo cp pico8/fake08.gptk Arkbuild/opt/fake08/
 sudo chmod 777 Arkbuild/usr/local/bin/pico8.sh
+sudo chmod 777 Arkbuild/usr/local/bin/pico8-autoboot.sh
+sudo chmod 777 Arkbuild/usr/local/bin/pico8launch.sh

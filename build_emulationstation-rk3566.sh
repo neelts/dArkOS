@@ -15,12 +15,14 @@ if [ -f "Arkbuild_package_cache/${CHIPSET}/emulationstation.tar.gz" ] && [ "$(ca
     sudo rm Arkbuild/home/ark/ES_VARIABLES.txt
 else
 	call_chroot "apt-get -y update && eatmydata apt-get -y install libfreeimage3 fonts-droid-fallback libfreetype6 curl vlc-bin libsdl2-mixer-2.0-0"
+	sudo cp patches/apply-es-startup-on-rom.py Arkbuild/home/ark/apply-es-startup-on-rom.py
 	call_chroot "cd /home/ark &&
 	  source ES_VARIABLES.txt &&
 	  rm ES_VARIABLES.txt &&
 	  git clone --recursive --depth=1 https://github.com/christianhaitian/EmulationStation-fcamod -b 503noTTS &&
 	  cd EmulationStation-fcamod &&
 	  git submodule update --init &&
+	  python3 /home/ark/apply-es-startup-on-rom.py &&
 	  cmake -DSCREENSCRAPER_DEV_LOGIN=\"devid=\$devid&devpassword=\$devpass\" -DGAMESDB_APIKEY=\"\$apikey\" -DSCREENSCRAPER_SOFTNAME=\"\$softname\" . &&
 	  make -j\$(nproc) &&
 	  mkdir -pv /usr/bin/emulationstation &&

@@ -423,6 +423,16 @@ sudo mv -f ${fat32_mountpoint}/tools/ThemeMaster-master/ThemeMaster.sh ${fat32_m
 sudo rm -rf ${fat32_mountpoint}/tools/ThemeMaster-master/
 rm -f master.zip
 
+# Copy PICO-8 boot settings script to carts folder (shows up in ES under PICO-8)
+sudo cp "pico8/PICO-8 Boot Settings.sh" "${fat32_mountpoint}/pico-8/carts/PICO-8 Boot Settings.sh"
+sudo chmod 755 "${fat32_mountpoint}/pico-8/carts/PICO-8 Boot Settings.sh"
+
+# If PICO8_ZIP is set, copy the raspi zip to EASYROMS so pico8.sh auto-extracts on first boot
+if [[ -n "$PICO8_ZIP" ]] && [[ -f "$PICO8_ZIP" ]]; then
+  echo "Copying PICO-8 raspi zip from $PICO8_ZIP..."
+  sudo cp "$PICO8_ZIP" "${fat32_mountpoint}/pico-8/"
+fi
+
 # Get some sample pico-8 games
 sudo rm -rf /roms/pico-8/carts/*
 sudo wget -t 3 -T 60 --no-check-certificate https://www.lexaloffle.com/bbs/cposts/1/15133.p8.png -O ${fat32_mountpoint}/pico-8/carts/celeste.p8.png
